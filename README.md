@@ -1,6 +1,10 @@
-# Psyduck
+```
 
-**Psyduck** is a fashion designer and outfit selector for various occasions.
+```
+
+# FashionAI
+
+**FashionAI** is a fashion designer and outfit selector for various occasions.
 
 ## Features
 
@@ -18,20 +22,20 @@
 
 ## Getting Started (Linux/WSL)
 
-Follow the steps below to set up and run Psyduck on **Linux/WSL**.
+Follow the steps below to set up and run FashionAI on **Linux/WSL**.
 
 ### 1. Clone the Repository
 
 ```sh
-git clone https://github.com/ladybug-me/psyduck.git
-cd psyduck
+git clone https://github.com/ladybug-me/FashionAI.git
+cd FashionAI
 ```
 
 ### 2. Create & Activate Python Virtual Environment
 
 ```sh
-python -m venv .psyduck
-source .psyduck/bin/activate    # use 'source .psyduck/bin/activate.fish' if you use the fish shell
+python -m venv .venv
+source  .\.venv\Scripts\activate    # use 'source .FashionAI/bin/activate.fish' if you use the fish shell
 ```
 
 ### 3. Install Requirements
@@ -80,22 +84,23 @@ http://127.0.0.1:8000
 
 ## Special Instructions for WSL Users
 
-- **Network settings:**  
-  In your WSL options (via Windows Terminal/WSL Integration or in your virtualization manager), set **networking to 'Mirrored'** and **enable Host address loopback**.  
+- **Network settings:**
+  In your WSL options (via Windows Terminal/WSL Integration or in your virtualization manager), set **networking to 'Mirrored'** and **enable Host address loopback**.
   This ensures that **the app.py running inside WSL can access Ollama running on Windows at port 11434**.
 
 ---
 
 ## Setting Up Ollama Desktop
 
-Psyduck uses Ollama for local AI model inference.
+FashionAI uses Ollama for local AI model inference.
 
-1. **Download & Install Ollama Desktop**  
-   - Download Ollama from [https://ollama.com/download](https://ollama.com/download)  
+1. **Download & Install Ollama Desktop**
+
+   - Download Ollama from [https://ollama.com/download](https://ollama.com/download)
    - Install it on your OS.
    - Note you need to signin in the ollama app in order to access the gpt-oss:120b-cloud model (can be changed in app.py)
+2. **Expose Ollama to Your Network**
 
-2. **Expose Ollama to Your Network**  
    - Open the Ollama Desktop settings.
    - Ensure **"Expose Ollama to your network"** is enabled.
      - This allows calls from WSL to access Ollama (default port: 11434).
@@ -108,7 +113,7 @@ Psyduck uses Ollama for local AI model inference.
 After setup, your project folder will look like this:
 
 ```
-psyduck/
+FashionAI/
 ├── app.py
 ├── requirements.txt
 ├── README.md

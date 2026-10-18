@@ -10,7 +10,7 @@ from sentence_transformers import SentenceTransformer
 # ===================================
 # 🔍 Debug logging
 # ===================================
-LOG_FILE = os.path.join(os.getcwd(), "psyduck_intent_log.txt")
+LOG_FILE = os.path.join(os.getcwd(), "FashionAI_intent_log.txt")
 
 def log_event(event_type, message):
     """Append structured log events to a text file."""
@@ -81,16 +81,16 @@ def append_message(conv_id: str, role: str, text: str):
 def build_prompt(conv_id: str, user_text: str) -> str:
     # This build_prompt is now only for "general chat"
     base = [
-        "You are Psyduck — a witty but helpful fashion assistant.",
+        "You are FashionAI — a witty but helpful fashion assistant.",
         "You answer general questions. If the user asks for an outfit, just chat naturally."
     ]
     with store_lock:
         history = conversation_store.get(conv_id, [])
     for m in history:
-        role = "User" if m["role"] == "user" else "Psyduck"
+        role = "User" if m["role"] == "user" else "FashionAI"
         base.append(f"{role}: {m['text']}")
     base.append(f"User: {user_text}")
-    base.append("Psyduck:")
+    base.append("FashionAI:")
     return "\n".join(base)
 
 def parse_ollama_response(resp_text: str) -> str:
@@ -308,7 +308,7 @@ async def begin_intent_flow(user_query: str):
 
     # 🧠 Step 5: Ask the first question for the *missing* field (with new, direct prompt)
     ask_prompt = (
-        f"You are Psyduck, a helpful assistant.\n"
+        f"You are FashionAI, a helpful assistant.\n"
         f"You *must* ask the user for *only* this one field: '{current_field}'.\n"
         f"This field means: {FIELD_DEFINITIONS.get(current_field, 'a fashion detail')}.\n"
         f"Ask a short, direct question to get this information. Do not add any other topics.\n"
@@ -441,7 +441,7 @@ async def chat(data: ChatInput):
         res.raise_for_status() # Was 'res_raise_for_status()'
         # --- END OF FIX ---
         
-        reply = parse_ollama_response(res.text) or "Hmm… Psyduck’s having a tiny brain fog."
+        reply = parse_ollama_response(res.text) or "Hmm… FashionAI’s having a tiny brain fog."
         append_message(conv_id, "bot", reply)
         
         return {"reply": reply, "conversation_id": conv_id}
@@ -549,7 +549,7 @@ async def intent_answer(body: dict):
         log_event("clarification", f"Session={session_id} | Field='{current_field}' | User is confused: '{answer}'")
 
         clarify_prompt = (
-            f"You are Psyduck, a helpful fashion assistant.\n"
+            f"You are FashionAI, a helpful fashion assistant.\n"
             f"You are trying to get the field '{current_field}'.\n"
             f"The user was confused and asked: \"{answer}\".\n"
             f"First, politely answer their question using this definition: '{FIELD_DEFINITIONS.get(current_field, 'a detail about your outfit')}'\n"
@@ -637,7 +637,7 @@ async def intent_answer(body: dict):
 
     # 🧠 Step 4: Ask model to generate next field question (with new, direct prompt)
     ask_prompt = (
-        f"You are Psyduck, a helpful assistant.\n"
+        f"You are FashionAI, a helpful assistant.\n"
         f"You *must* ask the user for *only* this one field: '{next_field}'.\n"
         f"This field means: {FIELD_DEFINITIONS.get(next_field, 'a fashion detail')}.\n"
         f"Ask a short, direct question to get this information. Do not add any other topics.\n"
@@ -795,5 +795,5 @@ async def health():
 # ===================================
 if __name__ == "__main__":
     import uvicorn
-    print("🚀 Psyduck web app running at http://127.0.0.1:8000")
+    print("🚀 FashionAI web app running at http://127.0.0.1:8000")
     uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)

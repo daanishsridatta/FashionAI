@@ -453,9 +453,9 @@
 [2025-11-06 21:59:34] [EXTRACT] Session=af7322cf-bc3e-4ce1-8be4-722fef073db9 | Field=formality | Answer='i want to wear semi-formal' | Extracted='semi-formal'
 [2025-11-06 21:59:45] [TRIAGE] Session=af7322cf-bc3e-4ce1-8be4-722fef073db9 | Field=gender | Answer='lady' | Triage='ANSWER'
 [2025-11-06 21:59:50] [EXTRACT] Session=af7322cf-bc3e-4ce1-8be4-722fef073db9 | Field=gender | Answer='lady' | Extracted='female'
-[2025-11-06 21:59:55] [TRIAGE] Session=af7322cf-bc3e-4ce1-8be4-722fef073db9 | Field=color | Answer='psyduck fuck' | Triage='ANSWER'
-[2025-11-06 21:59:56] [EXTRACT] Session=af7322cf-bc3e-4ce1-8be4-722fef073db9 | Field=color | Answer='psyduck fuck' | Extracted='UNKNOWN'
-[2025-11-06 21:59:56] [EXTRACT_FAILED] Session=af7322cf-bc3e-4ce1-8be4-722fef073db9 | Field='color' | Answer='psyduck fuck'
+[2025-11-06 21:59:55] [TRIAGE] Session=af7322cf-bc3e-4ce1-8be4-722fef073db9 | Field=color | Answer='FashionAI fuck' | Triage='ANSWER'
+[2025-11-06 21:59:56] [EXTRACT] Session=af7322cf-bc3e-4ce1-8be4-722fef073db9 | Field=color | Answer='FashionAI fuck' | Extracted='UNKNOWN'
+[2025-11-06 21:59:56] [EXTRACT_FAILED] Session=af7322cf-bc3e-4ce1-8be4-722fef073db9 | Field='color' | Answer='FashionAI fuck'
 [2025-11-06 22:00:58] [TRIAGE] Session=af7322cf-bc3e-4ce1-8be4-722fef073db9 | Field=color | Answer='black' | Triage='ANSWER'
 [2025-11-06 22:00:59] [EXTRACT] Session=af7322cf-bc3e-4ce1-8be4-722fef073db9 | Field=color | Answer='black' | Extracted='black'
 [2025-11-06 22:01:03] [TRIAGE] Session=af7322cf-bc3e-4ce1-8be4-722fef073db9 | Field=style | Answer='sexy' | Triage='ANSWER'
@@ -568,7 +568,7 @@
 [2025-11-07 00:54:39] [INTENT_COMPLETE] Session=246bbf47-abca-46ec-b339-5311291d82e8 | Final={'occasion': 'soccer game', 'category': 'shoes', 'formality': 'casual', 'gender': 'unisex', 'color': 'red', 'style': 'sporty'}
 [2025-11-07 00:54:39] [RECOMMEND_QUERY] Original: 'I am going for a soccer game' | Final: 'I am going for a soccer game sporty red shoes for a soccer game event casual'
 [2025-11-07 00:54:58] [RESET] Conv=729263a5-1914-46c9-ae3c-36d4ec44f76b cleared.
-[2025-11-07 01:07:29] [CHAT_TRIAGE] Conv=539945f5-1e8c-44c1-bdc8-0f720f3dd4cf | Text='hi there psyduck' | Triage='CHAT'
+[2025-11-07 01:07:29] [CHAT_TRIAGE] Conv=539945f5-1e8c-44c1-bdc8-0f720f3dd4cf | Text='hi there FashionAI' | Triage='CHAT'
 [2025-11-07 01:08:07] [CHAT_TRIAGE] Conv=539945f5-1e8c-44c1-bdc8-0f720f3dd4cf | Text='going to a friend's wedding' | Triage='NEW_REQUEST'
 [2025-11-07 01:08:07] [CHAT_TO_INTENT] Conv=539945f5-1e8c-44c1-bdc8-0f720f3dd4cf | Starting new intent flow for: 'going to a friend's wedding'
 [2025-11-07 01:08:07] [SESSION_START] Session=1be4ff3e-bbba-4627-97a1-b768c82c7a16 | Query='going to a friend's wedding'

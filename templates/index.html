@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Psyduck — Outfit Assistant 🐤</title>
+  <title>FashionAI — Outfit Assistant 🐤</title>
   <link rel="stylesheet" href="/static/style.css"> 
 </head>
 <body>
@@ -12,7 +12,7 @@
 
     <div class="chat-panel">
       <header>
-        <h1>psyduck 🐤</h1>
+        <h1>FashionAI 🐤</h1>
         <div class="button-group">
           <a href="/logs" target="_blank" style="text-decoration:none;">
             <button title="View Logs">Logs</button>
@@ -38,10 +38,10 @@
     <div class="gallery-panel">
       <div id="gallery-grid" class="gallery-grid">
         <div class="gallery-welcome">
-          <video class="welcome-video" src="/static/psyduck_video.mp4" autoplay loop muted playsinline></video>
+          <video class="welcome-video" src="/static/FashionAI_video.mp4" autoplay loop muted playsinline></video>
           <img src="/static/easter_egg.jpg" alt="Easter Egg" class="easter-egg-img" />
-          <h2>Welcome to Psyduck</h2>
-          <p>Leave your outfit headaches to Psyduck</p>
+          <h2>Welcome to FashionAI</h2>
+          <p>Leave your outfit headaches to FashionAI</p>
         </div>
       </div>
     </div>
@@ -81,7 +81,7 @@
     if (show && !typingMsg) {
       typingMsg = document.createElement("div");
       typingMsg.className = "msg bot typing";
-      typingMsg.textContent = "💭 Psyduck is getting a headache...";
+      typingMsg.textContent = "💭 FashionAI is getting a headache...";
       chatBox.appendChild(typingMsg);
       chatBox.scrollTo({ top: chatBox.scrollHeight, behavior: "smooth" });
     } else if (!show && typingMsg) {
@@ -147,7 +147,7 @@
       
     } catch (err) {
       showTyping(false);
-      appendMessage("bot", "⚠️ Network error or Psyduck fainted.");
+      appendMessage("bot", "⚠️ Network error or FashionAI fainted.");
     } finally {
       isTyping = false;
     }
@@ -155,7 +155,7 @@
 
   // === UPDATED: Outfit recommendation (populates right panel) ===
   async function showOutfits(query, intent) {
-    const searchingMsg = appendMessage("bot", "🧩 Searching Psyduck’s wardrobe...");
+    const searchingMsg = appendMessage("bot", "🧩 Searching FashionAI’s wardrobe...");
     galleryGrid.innerHTML = `<div class="gallery-welcome"><p>Searching...</p></div>`; // Placeholder
     
     try {
@@ -234,7 +234,7 @@
     debugBox.classList.remove("visible");
     
     // MODIFIED: Clear the gallery and restore the video welcome screen
-    galleryGrid.innerHTML = `<div class="gallery-welcome"><video class="welcome-video" src="/static/psyduck_video.mp4" autoplay loop muted playsinline></video><img src="/static/easter_egg.jpg" alt="Easter Egg" class="easter-egg-img" /><h2>Welcome to Psyduck</h2><p>Your fashion results will appear here.</p></div>`;
+    galleryGrid.innerHTML = `<div class="gallery-welcome"><video class="welcome-video" src="/static/FashionAI_video.mp4" autoplay loop muted playsinline></video><img src="/static/easter_egg.jpg" alt="Easter Egg" class="easter-egg-img" /><h2>Welcome to FashionAI</h2><p>Your fashion results will appear here.</p></div>`;
     
     appendMessage("bot", "🧹 Chat reset! Let’s start fresh!");
     

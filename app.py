@@ -10,7 +10,7 @@ from sentence_transformers import SentenceTransformer
 # ===================================
 # 🔍 Debug logging
 # ===================================
-LOG_FILE = os.path.join(os.getcwd(), "psyduck_intent_log.txt")
+LOG_FILE = os.path.join(os.getcwd(), "FashionAI_intent_log.txt")
 
 def log_event(event_type, message):
     """Append structured log events to a text file."""
@@ -79,16 +79,16 @@ def append_message(conv_id: str, role: str, text: str):
 def build_prompt(conv_id: str, user_text: str) -> str:
     # This build_prompt is now only for "general chat" / FOLLOW_UP
     base = [
-        "You are Psyduck — a witty but helpful fashion assistant.",
+        "You are FashionAI — a witty but helpful fashion assistant.",
         "You are in a follow-up conversation. Chat naturally with the user about their last request or answer their general questions."
     ]
     with store_lock:
         history = conversation_store.get(conv_id, [])
     for m in history:
-        role = "User" if m["role"] == "user" else "Psyduck"
+        role = "User" if m["role"] == "user" else "FashionAI"
         base.append(f"{role}: {m['text']}")
     base.append(f"User: {user_text}")
-    base.append("Psyduck:")
+    base.append("FashionAI:")
     return "\n".join(base)
 
 def parse_ollama_response(resp_text: str) -> str:
@@ -297,7 +297,7 @@ async def begin_intent_flow(user_query: str):
     if not intent_context: intent_context = "(No details yet)"
     
     ask_prompt = (
-        f"You are Psyduck, a helpful fashion assistant.\n"
+        f"You are FashionAI, a helpful fashion assistant.\n"
         f"You *must* ask a question to get the value for this one field: '{current_field}'.\n"
         f"Field definition: {FIELD_DEFINITIONS.get(current_field, 'a fashion detail')}.\n"
         f"Current info: {intent_context}\n\n"
@@ -425,7 +425,7 @@ async def chat(data: ChatInput):
     try:
         res = requests.post(OLLAMA_URL, json={"model": OLLAMA_MODEL, "prompt": prompt, "stream": False}, timeout=60)
         res.raise_for_status() # Fixed typo
-        reply = parse_ollama_response(res.text) or "Hmm… Psyduck’s having a tiny brain fog."
+        reply = parse_ollama_response(res.text) or "Hmm… FashionAI’s having a tiny brain fog."
         append_message(conv_id, "bot", reply)
         
         return {"reply": reply, "conversation_id": conv_id}
@@ -512,7 +512,7 @@ async def intent_answer(body: dict):
     if triage_result == "QUESTION":
         log_event("clarification", f"Session={session_id} | Field='{current_field}' | User is confused: '{answer}'")
         clarify_prompt = (
-            f"You are Psyduck, a helpful fashion assistant.\n"
+            f"You are FashionAI, a helpful fashion assistant.\n"
             f"You are trying to get the field '{current_field}'.\n"
             f"The user was confused and asked: \"{answer}\".\n"
             f"First, politely answer their question using this definition: '{FIELD_DEFINITIONS.get(current_field, 'a detail about your outfit')}'\n"
@@ -585,7 +585,7 @@ async def intent_answer(body: dict):
     if not intent_context: intent_context = "(No details yet)"
 
     ask_prompt = (
-        f"You are Psyduck, a helpful fashion assistant.\n"
+        f"You are FashionAI, a helpful fashion assistant.\n"
         f"You *must* ask a question to get the value for this one field: '{next_field}'.\n"
         f"Field definition: {FIELD_DEFINITIONS.get(next_field, 'a fashion detail')}.\n"
         f"Current info: {intent_context}\n\n"
@@ -763,5 +763,5 @@ async def health():
 # ===================================
 if __name__ == "__main__":
     import uvicorn
-    print("🚀 Psyduck web app running at http://127.0.0.1:8000")
+    print("🚀 FashionAI web app running at http://127.0.0.1:8000")
     uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
