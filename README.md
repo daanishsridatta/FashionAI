@@ -1,10 +1,8 @@
-```
-
-```
-
 # FashionAI
 
-**FashionAI** is a fashion designer and outfit selector for various occasions.
+**FashionAI** is an AI-powered conversational fashion stylist and outfit selector for various occasions.
+
+> 📖 **Full Technical Architecture & Documentation**: For an in-depth breakdown of system design, multi-turn state machines, hybrid SQL + FAISS search, and API contracts, see [PROJECT_DOCUMENTATION.md](PROJECT_DOCUMENTATION.md).
 
 ## Features
 
